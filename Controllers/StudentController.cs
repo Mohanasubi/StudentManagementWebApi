@@ -32,8 +32,46 @@ namespace StudentManagementWebApi.Controllers
         // GetAllStudents method to retrieve all students
         public IActionResult GetAllStudents()
         {
-            var students = iStudentService.GettAllStudents();
+            var students = iStudentService.GetAllStudents();
             return Ok(students);
+        }
+
+        [HttpGet]
+        [Route("{studentId}")]
+        // GetStudentById method to retrieve a student by ID
+        public IActionResult GetStudentById(int studentId)
+        {
+            var student = iStudentService.GetStudent(studentId);
+            if (student != null)
+            {
+                return Ok(student);
+            }
+            return NotFound();
+        }
+
+        // DeleteStudent method to delete a student by ID
+        [HttpDelete]
+        public IActionResult DeleteStudentById(int studentId)
+        {
+            var isDeleted = iStudentService.DeleteStudent(studentId);
+            if (isDeleted)
+            {
+                return Ok(new { message = "Student deleted successfully" });
+            }
+            return NotFound(new { message = "Student not found" });
+        }
+
+        //put method to update student details
+
+        [HttpPut]
+        public IActionResult UpdateStudentById(int studentId, AddUpdateStudent addUpdateStudentObj)
+        {
+            var updatedStudent = iStudentService.UpdateStudent(studentId, addUpdateStudentObj);
+            if (updatedStudent != null)
+            {
+                return Ok(new { message = "Student updated successfully" });
+            }
+            return NotFound(new { message = "Student not found" });
         }
     }
 }
