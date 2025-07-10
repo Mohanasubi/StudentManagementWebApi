@@ -1,5 +1,7 @@
 ﻿namespace StudentManagementWebApi.Controllers.Models
 {
+   
+    // This class represents a student entity in the system
     public class Student
     {
         public int StudentId { get; set; }

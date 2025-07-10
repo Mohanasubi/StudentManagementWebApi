@@ -1,5 +1,6 @@
 ﻿namespace StudentManagementWebApi.Controllers.Models
 {
+    // This class is used to add or update student information
     public class AddUpdateStudent
     {
         public string FullName { get; set; }

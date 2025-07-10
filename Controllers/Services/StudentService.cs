@@ -9,9 +9,11 @@ namespace StudentManagementWebApi.Controllers.Services
 
         public List<Student> GettAllStudents(); 
     }
+    // service class that implements the IStudentService interface
     public class StudentService: IStudentService
     {
-       private readonly List<Student> students;
+        // List to hold student data
+        private readonly List<Student> students;
         public StudentService()
         {
             students = new List<Student>()
@@ -29,6 +31,7 @@ namespace StudentManagementWebApi.Controllers.Services
             };
         }
 
+        // Method to add a new student
         public Student AddStudent(AddUpdateStudent addUpdateStudentObj)
         {
             var newStudent = new Student
@@ -46,6 +49,7 @@ namespace StudentManagementWebApi.Controllers.Services
             return newStudent;
         }
 
+        // Method to get all students
         public List<Student> GettAllStudents()
         {
             return students.ToList();
